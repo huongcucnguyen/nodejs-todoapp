@@ -37,12 +37,22 @@ editFormDOM.addEventListener("submit", async (e) => {
             name: taskName,
             completed: taskCompleted,
         });
+
+        const {_id: taskID, completed, name } = task;
+        console.log(task._id);
+        console.log(taskID);
+
+        taskIDDOM.textContent = taskID;
+        taskNameDOM.value = name;
+        if (completed) {
+            taskCompletedDOM.checked = true;
+        }
         formAlertDOM.style.display = "block";
         formAlertDOM.textContent= `編集に成功しました`;
         formAlertDOM.classList.add("text-success");
     } catch (err) {
         console.log(err);
-
+    }
     setTimeout(() => {
         formAlertDOM.style.display = "none";
         formAlertDOM.classList.remove("text-success");
